@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.announce-text {
+    font-size: 10px !important;
+}
+
+
+.cart {}
+
+
+.cart-img {
+    height: 100px;
+    width: 100px;
+}
+
+.cart-delete {
+    color: #003D29;
+    text-decoration: none;
+}
+
+.cart-btn {
+    background-color: #003D29;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    height: 25px;
+    width: 25px;
+    justify-self: center;
+}
+
+.check-btn {
+    background-color: #003D29;
+    color: white;
+
+}
+
+.check-btn:hover {
+    background-color: #003D29;
+    color: white;
+}
+
+.footer {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.footer h5 {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.footer ul {
+    padding-left: 0;
+}
+
+.footer ul li a {
+    color: #bbbbbb;
+    text-decoration: none;
+}
+
+.footer ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer .social-links a {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.footer .social-links a:hover {
+    color: #003D29 !important;
+}
+
+.footer form input {
+    border-radius: 4px;
+}
+
+.footer form button {
+    background-color: #003D29;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+}
+
+.footer form button:hover {
+    background-color: #003D29;
+}
+
+.footer hr {
+    border-top: 1px solid #bbbbbb;
+}
+
+.footer p {
+    margin-bottom: 0;
+}

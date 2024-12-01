@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopCart</title>
+    <link rel="icon" href="/Pics/hero/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://kit.fontawesome.com/729d702643.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div id="favoriteAlert" class="alert" role="alert"
+        style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1050;"></div>
+
+
+
+    <!-- Announcement header -->
+    <div class="container-fluid bg-success py-2 text-white">
+        <div class="row align-items-center justify-content-between">
+            <!-- Left-aligned element -->
+            <div class="col-auto">
+                <h3 class="announce-text mb-0">+2349069753398</h3>
+            </div>
+
+            <!-- Center-aligned element -->
+            <div class="col-auto text-center">
+                <h3 class="announce-text mb-0">Get 50% off Selected Items | Shop Now</h3>
+            </div>
+
+            <!-- Right-aligned element -->
+            <div class="col-auto d-flex">
+                <div class="dropdown me-1">
+                    <button class="btn btn-success dropdown-toggle announce-text" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        ENG
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-success dropdown-toggle announce-text" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        LOCATION
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/Pics/hero/logo.png" style="width: 60px; height: auto;"> Shopcart
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Offcanvas Menu -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title navbar-brand" id="offcanvasNavbarLabel">Shopcart</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav me-auto gap-lg-5 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Categories
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="#">Deals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">What's New</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Delivery</a>
+                        </li>
+                    </ul>
+
+
+                    <!-- Modal for suggestions -->
+                    <div id="suggestionsModal" class="modal" style="display: none;">
+                        <div class="modal-content">
+                            <span class="close-btn" onclick="closeModal()">&times;</span>
+                            <ul id="suggestionsList" class="suggestions-list">
+                                <!-- Suggestions will be dynamically inserted here -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Search Bar -->
+                    <form class="d-flex mx-auto align-items-center" style="position: relative; width: 300px;">
+                        <input id="searchInput" class="form-control search-bar" type="search"
+                            placeholder="Search Product" aria-label="Search" style="padding-right: 40px;"
+                            onkeyup="showSuggestions()">
+                        <i class="fa-solid search-icon fa-magnifying-glass"
+                            style="position: absolute; right: 10px; color: #aaa;"></i>
+                    </form>
+                    <!-- End Links -->
+                    <div class="d-lg-flex ms-auto gap-3 align-items-center r">
+                        <a class="nav-link " href="#"><i class="fa-regular fa-user"></i> Account</a>
+                        <a class="nav-link" href="/cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <!-- Hero -->
+    <div class="container d-flex hero-div rounded justify-content-center mt-lg-1 align-items-center">
+        <div class="col-lg-6 col-md-6 col-sm-auto hero-text align-items-center ">
+            <h4 class="ms-lg-5 ms-md-5">Grab up to 50% Off On <br> Selected Headphone</h4>
+            <button class="btn btn-round hero-btn ms-md-5 ms-lg-5">Buy Now</button>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-auto ms-lg-5  "><img class="hero-img align-self-end ms-lg-5"
+                src="/Pics/hero/lady1.png" alt="">
+        </div>
+    </div>
+
+    <!-- Content -->
+    <!-- Dropdowns -->
+    <div class="container d-flex mt-lg-5 gap-lg-1">
+        <div class="row w-100">
+            <!-- Each dropdown will take 4 columns on small screens and auto-width on larger screens -->
+            <div class="dropdown col-4 col-md-3 col-lg-auto mb-3 mb-lg-0">
+                <button class="btn btn-secondary dropdown-toggle my-dropdown" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Type
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                </ul>
+            </div>
+
+            <div class="dropdown col-4 col-md-3 col-lg-auto mb-3 mb-lg-0">
+                <button class="btn btn-secondary dropdown-toggle my-dropdown" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Price
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                </ul>
+            </div>
+
+            <div class="dropdown col-4 col-md-3 col-lg-auto mb-3 mb-lg-0">
+                <button class="btn btn-secondary dropdown-toggle my-dropdown" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Review
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                </ul>
+            </div>
+
+            <div class="dropdown col-4 col-md-3 col-lg-auto mb-3 mb-lg-0">
+                <button class="btn btn-secondary dropdown-toggle my-dropdown" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Color
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                </ul>
+            </div>
+
+            <div class="dropdown col-4 col-md-3 col-lg-auto mb-3 mb-lg-0">
+                <button class="btn btn-secondary dropdown-toggle my-dropdown" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Offer
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                </ul>
+            </div>
+
+            <div class="dropdown col-4 col-md-3 col-lg-auto mb-3 mb-lg-0">
+                <button class="btn btn-secondary my-dropdown" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    All Filters <i class="fa-solid fa-filter"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                </ul>
+            </div>
+
+            <!-- Last dropdown aligned to the right -->
+            <div class="dropdown ms-lg-auto bg-white col-4 col-md-3 col-lg-auto mb-3 mb-lg-0">
+                <button class="btn btn-secondary dropdown-toggle last-dropdown" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Sort by
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button class="dropdown-item" type="button">Action</button></li>
+                    <li><button class="dropdown-item" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Products -->
+    <h4 class="container mt-lg-5 product-text">Headphones For You!</h4>
+    <div class="container my-5">
+        <!-- Page 1 -->
+        <div id="page-1" class="page">
+            <!-- Product row 1 -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <!-- Product Card 1 -->
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="wireless-earbuds-ipx8">
+                            <img src="/Pics/Products/wireless.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Wireless Earbuds, IPX8</h5>
+                                <p class="card-price ms-auto"><strong>$89.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="airpods-max">
+                            <img src="/Pics/Products/pod.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">AirPods Max</h5>
+                                <p class="card-price ms-auto"><strong>$105.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="bose-bt">
+                            <img src="/Pics/Products/bose.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Bose BT Earphones</h5>
+                                <p class="card-price ms-auto"><strong>$199.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85 py-2">
+                        <div class="card-img d-flex" id="vivefox">
+                            <img src="/Pics/Products/vive.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">VIVEFOX Headphones</h5>
+                                <p class="card-price ms-auto"><strong>$69.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Product row 2 -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="jbl-tune">
+                            <img src="/Pics/Products/jbl.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">JBL TUNE 600BTNC</h5>
+                                <p class="card-price ms-auto"><strong>$289.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="tagry-blue">
+                            <img src="/Pics/Products/tagry.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">TAGRY Bluetooth</h5>
+                                <p class="card-price ms-auto"><strong>$59.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="monster-mnflex">
+                            <img src="/Pics/Products/monster.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Monster MNFLEX</h5>
+                                <p class="card-price ms-auto"><strong>$234.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="mpow-ch6">
+                            <img src="/Pics/Products/mpow.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Mpow CH6</h5>
+                                <p class="card-price ms-auto"><strong>$19.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Product row 3 -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="tao-earbud">
+                            <img src="/Pics/Products/tatro.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Taotronic Earbuds</h5>
+                                <p class="card-price ms-auto"><strong>$309.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="soundpeats">
+                            <img src="/Pics/Products/sound.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">SoundPEATS APTX</h5>
+                                <p class="card-price ms-auto"><strong>$12.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="beats-solo">
+                            <img src="/Pics/Products/beat.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Beats Solo3</h5>
+                                <p class="card-price ms-auto"><strong>$99.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="jellycomb">
+                            <img src="/Pics/Products/jelly.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Jelly Comb Bluetooth</h5>
+                                <p class="card-price ms-auto"><strong>$139.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Page 2  -->
+        <div id="page-2" class="page" style="display: none;">
+            <!-- Product row 1 -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="tao-earbud">
+                            <img src="/Pics/Products/tatro.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Taotronic Earbuds</h5>
+                                <p class="card-price ms-auto"><strong>$309.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="soundpeats">
+                            <img src="/Pics/Products/sound.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">SoundPEATS APTX</h5>
+                                <p class="card-price ms-auto"><strong>$12.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="beats-solo">
+                            <img src="/Pics/Products/beat.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Beats Solo3</h5>
+                                <p class="card-price ms-auto"><strong>$99.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="jellycomb">
+                            <img src="/Pics/Products/jelly.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Jelly Comb Bluetooth</h5>
+                                <p class="card-price ms-auto"><strong>$139.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Product row 2 -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <!-- Product Card 1 -->
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="wireless-earbuds-ipx8">
+                            <img src="/Pics/Products/wireless.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Wireless Earbuds, IPX8</h5>
+                                <p class="card-price ms-auto"><strong>$89.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="airpods-max">
+                            <img src="/Pics/Products/pod.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">AirPods Max</h5>
+                                <p class="card-price ms-auto"><strong>$105.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="bose-bt">
+                            <img src="/Pics/Products/bose.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Bose BT Earphones</h5>
+                                <p class="card-price ms-auto"><strong>$199.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85 py-2">
+                        <div class="card-img d-flex" id="vivefox">
+                            <img src="/Pics/Products/vive.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">VIVEFOX Headphones</h5>
+                                <p class="card-price ms-auto"><strong>$69.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Product row 3 -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="jbl-tune">
+                            <img src="/Pics/Products/jbl.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">JBL TUNE 600BTNC</h5>
+                                <p class="card-price ms-auto"><strong>$289.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="tagry-blue">
+                            <img src="/Pics/Products/tagry.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">TAGRY Bluetooth</h5>
+                                <p class="card-price ms-auto"><strong>$59.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="monster-mnflex">
+                            <img src="/Pics/Products/monster.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Monster MNFLEX</h5>
+                                <p class="card-price ms-auto"><strong>$234.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="mpow-ch6">
+                            <img src="/Pics/Products/mpow.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Mpow CH6</h5>
+                                <p class="card-price ms-auto"><strong>$19.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Page 3  -->
+        <div id="page-3" class="page" style="display: none;">
+            <!-- Product row 1 -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="jbl-tune">
+                            <img src="/Pics/Products/jbl.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">JBL TUNE 600BTNC</h5>
+                                <p class="card-price ms-auto"><strong>$289.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="tagry-blue">
+                            <img src="/Pics/Products/tagry.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">TAGRY Bluetooth</h5>
+                                <p class="card-price ms-auto"><strong>$59.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="monster-mnflex">
+                            <img src="/Pics/Products/monster.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Monster MNFLEX</h5>
+                                <p class="card-price ms-auto"><strong>$234.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="mpow-ch6">
+                            <img src="/Pics/Products/mpow.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Mpow CH6</h5>
+                                <p class="card-price ms-auto"><strong>$19.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Product row 2 -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="tao-earbud">
+                            <img src="/Pics/Products/tatro.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Taotronic Earbuds</h5>
+                                <p class="card-price ms-auto"><strong>$309.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="soundpeats">
+                            <img src="/Pics/Products/sound.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">SoundPEATS APTX</h5>
+                                <p class="card-price ms-auto"><strong>$12.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="beats-solo">
+                            <img src="/Pics/Products/beat.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Beats Solo3</h5>
+                                <p class="card-price ms-auto"><strong>$99.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="jellycomb">
+                            <img src="/Pics/Products/jelly.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Jelly Comb Bluetooth</h5>
+                                <p class="card-price ms-auto"><strong>$139.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Product row 3 -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <!-- Product Card 1 -->
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="wireless-earbuds-ipx8">
+                            <img src="/Pics/Products/wireless.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Wireless Earbuds, IPX8</h5>
+                                <p class="card-price ms-auto"><strong>$89.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="airpods-max">
+                            <img src="/Pics/Products/pod.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">AirPods Max</h5>
+                                <p class="card-price ms-auto"><strong>$105.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="bose-bt">
+                            <img src="/Pics/Products/bose.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Bose BT Earphones</h5>
+                                <p class="card-price ms-auto"><strong>$199.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85 py-2">
+                        <div class="card-img d-flex" id="vivefox">
+                            <img src="/Pics/Products/vive.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">VIVEFOX Headphones</h5>
+                                <p class="card-price ms-auto"><strong>$69.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Page 4  -->
+        <div id="page-4" class="page" style="display: none;">
+            <!-- Product row 1 -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="tao-earbud">
+                            <img src="/Pics/Products/tatro.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Taotronic Earbuds</h5>
+                                <p class="card-price ms-auto"><strong>$309.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="soundpeats">
+                            <img src="/Pics/Products/sound.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">SoundPEATS APTX</h5>
+                                <p class="card-price ms-auto"><strong>$12.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="beats-solo">
+                            <img src="/Pics/Products/beat.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Beats Solo3</h5>
+                                <p class="card-price ms-auto"><strong>$99.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="jellycomb">
+                            <img src="/Pics/Products/jelly.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Jelly Comb Bluetooth</h5>
+                                <p class="card-price ms-auto"><strong>$139.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Product row 2 -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <!-- Product Card 1 -->
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="wireless-earbuds-ipx8">
+                            <img src="/Pics/Products/wireless.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Wireless Earbuds, IPX8</h5>
+                                <p class="card-price ms-auto"><strong>$89.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="airpods-max">
+                            <img src="/Pics/Products/pod.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">AirPods Max</h5>
+                                <p class="card-price ms-auto"><strong>$105.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="bose-bt">
+                            <img src="/Pics/Products/bose.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Bose BT Earphones</h5>
+                                <p class="card-price ms-auto"><strong>$199.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85 py-2">
+                        <div class="card-img d-flex" id="vivefox">
+                            <img src="/Pics/Products/vive.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">VIVEFOX Headphones</h5>
+                                <p class="card-price ms-auto"><strong>$69.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="jbl-tune">
+                            <img src="/Pics/Products/jbl.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">JBL TUNE 600BTNC</h5>
+                                <p class="card-price ms-auto"><strong>$289.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="tagry-blue">
+                            <img src="/Pics/Products/tagry.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">TAGRY Bluetooth</h5>
+                                <p class="card-price ms-auto"><strong>$59.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="monster-mnflex">
+                            <img src="/Pics/Products/monster.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Monster MNFLEX</h5>
+                                <p class="card-price ms-auto"><strong>$234.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card w-85">
+                        <div class="card-img d-flex py-2" id="mpow-ch6">
+                            <img src="/Pics/Products/mpow.png" class="card-img-top" alt="Wireless Earbuds">
+                            <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="paragraph d-flex">
+                                <h5 class="card-title">Mpow CH6</h5>
+                                <p class="card-price ms-auto"><strong>$19.99</strong></p>
+                            </div>
+                            <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                            <div class="d-flex">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <h6>(121)</h6>
+                            </div>
+                            <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example" class="mt-4">
+            <ul class="pagination justify-content-center gap-3">
+                <li class="page-item">
+                    <button class="page-link rounded-circle" onclick="showPage(1)">1</button>
+                </li>
+                <li class="page-item">
+                    <button class="page-link rounded-circle" onclick="showPage(2)">2</button>
+                </li>
+                <li class="page-item">
+                    <button class="page-link rounded-circle" onclick="showPage(3)">3</button>
+                </li>
+                <li class="page-item">
+                    <button class="page-link rounded-circle" onclick="nextPage()">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Weekly Products -->
+    <h4 class="container mt-lg-5 product-text">Weekly Popular Products</h4>
+    <div class="container my-5">
+        <!-- Product row 1 -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <!-- Product Card 1 -->
+            <div class="col">
+                <div class="card w-85">
+                    <div class="card-img d-flex py-2" id="gaming">
+                        <img src="/Pics/Products/game.png" class="card-img-top" alt="Wireless Earbuds">
+                        <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="paragraph d-flex">
+                            <h5 class="card-title">Gaming Headphones</h5>
+                            <p class="card-price ms-auto"><strong>$989.99</strong></p>
+                        </div>
+                        <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                        <div class="d-flex">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <h6>(121)</h6>
+                        </div>
+                        <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card w-85">
+                    <div class="card-img d-flex py-2" id="macbook">
+                        <img src="/Pics/Products/mac.png" class="card-img-top" alt="Wireless Earbuds">
+                        <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="paragraph d-flex">
+                            <h5 class="card-title">Macbook Pro 13</h5>
+                            <p class="card-price ms-auto"><strong>$679.99</strong></p>
+                        </div>
+                        <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                        <div class="d-flex">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <h6>(121)</h6>
+                        </div>
+                        <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card w-85">
+                    <div class="card-img d-flex py-2" id="homepod">
+                        <img src="/Pics/Products/home.png" class="card-img-top" alt="Wireless Earbuds">
+                        <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="paragraph d-flex">
+                            <h5 class="card-title">HomePod Mini</h5>
+                            <p class="card-price ms-auto"><strong>$2.99</strong></p>
+                        </div>
+                        <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                        <div class="d-flex">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <h6>(121)</h6>
+                        </div>
+                        <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card w-85">
+                    <div class="card-img d-flex py-2" id="sleeve">
+                        <img src="/Pics/Products/sleeve.png" class="card-img-top" alt="Wireless Earbuds">
+                        <i class="fa-solid fa-heart heart-icon" onclick="toggleHeart(this)"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="paragraph d-flex">
+                            <h5 class="card-title">Laptop Sleeve Macbook</h5>
+                            <p class="card-price ms-auto"><strong>$19.99</strong></p>
+                        </div>
+                        <p class="card-text me-lg-5">Organic Cotton, fairtrade certified</p>
+                        <div class="d-flex">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <h6>(121)</h6>
+                        </div>
+                        <button class="btn card-btn border-dark text-dark">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+    <!-- Services -->
+
+    <h4 class="container mt-lg-5 product-text">Services To Help You Shop</h4>
+    <div class="container my-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card service-card h-100">
+                    <div class="card-body px-5 py-5 my-card-body">
+                        <h1 class="card-title my-card-title">Frequently Asked Questions</h1>
+                        <p class="card-text my-card-text">Updates on safe shopping in our stores.</p>
+                    </div>
+                    <img src="/Pics/Service/man2.png" class="card-img-bottom1" alt="Frequently Asked Questions">
+                </div>
+            </div>
+            <div class="col">
+                <div class="card service-card h-100">
+                    <div class="card-body px-5 py-5">
+                        <h5 class="card-title my-card-title">Online Payment Process</h5>
+                        <p class="card-text my-card-text">Updates on safe shopping in our stores.</p>
+                    </div>
+                    <img src="/Pics/Service/man2.png" class="card-img-bottom2" alt="Online Payment Process">
+                </div>
+            </div>
+            <div class="col">
+                <div class="card service-card h-100">
+                    <div class="card-body px-5 py-5">
+                        <h5 class="card-title my-card-title">Home Delivery Options</h5>
+                        <p class="card-text my-card-text">Updates on safe shopping in our stores.</p>
+                    </div>
+                    <img src="/Pics/Service/man2.png" class="card-img-bottom3" alt="Home Delivery Options">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light pt-4">
+        <div class="container">
+            <div class="row">
+                <!-- Customer Service Section -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Customer Service</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Contact Us</a></li>
+                        <li><a href="#" class="text-light">Order Tracking</a></li>
+                        <li><a href="#" class="text-light">Returns & Refunds</a></li>
+                        <li><a href="#" class="text-light">Shipping Information</a></li>
+                        <li><a href="#" class="text-light">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Information Section -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Information</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">About Us</a></li>
+                        <li><a href="#" class="text-light">Privacy Policy</a></li>
+                        <li><a href="#" class="text-light">Terms & Conditions</a></li>
+                        <li><a href="#" class="text-light">Careers</a></li>
+                        <li><a href="#" class="text-light">Affiliate Program</a></li>
+                    </ul>
+                </div>
+
+                <!-- Follow Us Section -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Follow Us</h5>
+                    <div>
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Newsletter Subscription Section -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
+                    <form class="d-flex">
+                        <input type="email" class="form-control" placeholder="Enter your email" required>
+                        <button class="btn footer-btn ms-2" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="border-light">
+            <div class="text-center py-3">
+                <p class="mb-0">&copy; 2024 Your Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        function toggleHeart(element) {
+            var active = element.classList.toggle('active');
+            var alertDiv = document.getElementById("favoriteAlert");
+
+            if (active) {
+                alertDiv.className = "alert alert-success"; // Green background for success
+                alertDiv.innerText = "Added to Wishlist";
+            } else {
+                alertDiv.className = "alert alert-danger"; // Red background for danger
+                alertDiv.innerText = "Removed from Wishlist";
+            }
+
+            // Show the alert
+            alertDiv.style.display = "block";
+
+            // Hide the alert after 3 seconds
+            setTimeout(function () {
+                alertDiv.style.display = "none";
+            }, 3000);
+        }
+
+    </script>
+
+    <!-- JavaScript for Pagination -->
+    <script>
+        let currentPage = 1; // Starting page
+        const totalPages = 4; // Replace with your actual total number of pages
+
+        function showPage(page) {
+            // Ensure the page number is within range
+            if (page < 1 || page > totalPages) return;
+
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(pageDiv => {
+                pageDiv.style.display = 'none';
+            });
+
+            // Show the selected page
+            document.getElementById(`page-${page}`).style.display = 'block';
+
+            // Update the current page
+            currentPage = page;
+        }
+
+        function nextPage() {
+            // Only proceed if currentPage is less than totalPages
+            if (currentPage < totalPages) {
+                showPage(currentPage + 1);
+            } else {
+                showPage(currentPage);
+            }
+        }
+
+
+
+    </script>
+
+    <script>
+
+        // Array of products
+        const products = [
+            { name: "Wireless Earbuds, IPX8", link: "#wireless-earbuds-ipx8" },
+            { name: "Airpods Max", link: "#airpods-max" },
+            { name: "Bose BT Earphones", link: "#bose-bt" },
+            { name: "VIVEFOX Headphones", link: "#vivefox" },
+            { name: "JBL TUNE 600BTNC", link: "#jbl-tune" },
+            { name: "TAGRY Bluetooth", link: "#tagry-blue" },
+            { name: "Monster MNFLEX", link: "#monster-mnflex" },
+            { name: "Mpow CH6", link: "#mpow-ch6" },
+            { name: "Taotronic Earbuds", link: "#tao-earbud" },
+            { name: "SoundPEATS APTX", link: "#soundpeats" },
+            { name: "Beats Solo3", link: "#beats-solo" },
+            { name: "Jelly Comb Bluetooth", link: "#jellycomb" },
+            { name: "Gaming Headphones", link: "#gaming" },
+            { name: "Macbook Pro 13", link: "#macbook" },
+            { name: "HomePod Mini", link: "#homepod" },
+            { name: "Laptop Sleeve Macbook", link: "#sleeve" },
+
+            // More products
+        ];
+
+        // Show suggestions in the modal
+        function showSuggestions() {
+            const input = document.getElementById('searchInput').value;
+            const suggestionsList = document.getElementById('suggestionsList');
+            const modal = document.getElementById('suggestionsModal');
+
+            // Clear previous suggestions
+            suggestionsList.innerHTML = '';
+
+            // If the search input is empty, hide the modal
+            if (!input) {
+                modal.style.display = 'none';
+                return;
+            }
+
+            // Filter products based on the input
+            const filteredProducts = products.filter(product =>
+                product.name.toLowerCase().includes(input.toLowerCase())
+            );
+
+            // If no products match, hide the modal
+            if (filteredProducts.length === 0) {
+                modal.style.display = 'none';
+                return;
+            }
+
+            // Display matching products
+            filteredProducts.forEach(product => {
+                const li = document.createElement('li');
+                li.textContent = product.name;
+                li.onclick = () => {
+                    document.querySelector(product.link).scrollIntoView({ behavior: 'smooth' }); // Scroll to the product section
+                    closeModal(); // Close the modal after selection
+                };
+                suggestionsList.appendChild(li);
+            });
+
+            // Show the modal
+            modal.style.display = 'block';
+        }
+
+        // Close the modal
+        function closeModal() {
+            const modal = document.getElementById('suggestionsModal');
+            modal.style.display = 'none';
+        }
+
+        // Close the modal if clicked outside the modal content
+        window.onclick = function (event) {
+            const modal = document.getElementById('suggestionsModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopCart</title>
+    <link rel="icon" href="/Pics/hero/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/cart.css">
+    <script src="https://kit.fontawesome.com/729d702643.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Announcement header -->
+    <div class="container-fluid bg-success py-2 text-white">
+        <div class="row align-items-center justify-content-between">
+            <!-- Left-aligned element -->
+            <div class="col-auto">
+                <h3 class="announce-text mb-0">+2349069753398</h3>
+            </div>
+
+            <!-- Center-aligned element -->
+            <div class="col-auto text-center">
+                <h3 class="announce-text mb-0">Get 50% off Selected Items | Shop Now</h3>
+            </div>
+
+            <!-- Right-aligned element -->
+            <div class="col-auto d-flex">
+                <div class="dropdown me-1">
+                    <button class="btn btn-success dropdown-toggle announce-text" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        ENG
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-success dropdown-toggle announce-text" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        LOCATION
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">
+                <img src="/Pics/hero/logo.png" style="width: 60px; height: auto;"> Shopcart
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Offcanvas Menu -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title navbar-brand" id="offcanvasNavbarLabel">Shopcart</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav me-auto gap-lg-5 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Categories
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="#">Deals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">What's New</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Delivery</a>
+                        </li>
+                    </ul>
+
+                    <!-- Search Bar -->
+                    <form class="d-flex mx-auto align-items-center" style="position: relative; width: 300px;">
+                        <input class="form-control search-bar" type="search" placeholder=" Search Product"
+                            aria-label="Search" style="padding-right: 40px;">
+                        <i class="fa-solid search-icon fa-magnifying-glass"
+                            style="position: absolute; right: 10px; color: #aaa;"></i>
+                    </form>
+
+                    <!-- End Links -->
+                    <div class="d-lg-flex ms-auto gap-3 align-items-center r">
+                        <a class="nav-link " href="#"><i class="fa-regular fa-user"></i> Account</a>
+                        <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Cart -->
+
+    <div class="container cart">
+        <div class="d-flex flex-column flex-lg-row row gap-lg-4">
+            <!-- Cart Items Section -->
+            <div class="shadow col-lg-7 col-md-auto col-sm-12 mb-4">
+                <h4>Cart(<span id="cart-count">1</span>)</h4>
+                <div id="no-items-message" style="display: none; color: gray; font-style: italic;">No items in cart
+                </div>
+
+                <hr>
+                <div class="cart-item">
+                    <div class="d-flex">
+                        <div>
+                            <img class="cart-img" src="/Pics/Products/pod.png" alt="">
+                        </div>
+                        <div class="ms-4 align-self-center">
+                            <h5>AirPods Max</h5>
+                            <h6><span style="color: gray;">Seller:</span> Apple Stores</h6>
+                            <h6 style="color: gray;">In Stock</h6>
+                        </div>
+                        <div class="ms-auto">
+                            <h5>$105.99</h5>
+                            <div class="d-flex gap-1">
+                                <h6><s>$125.99</s></h6>
+                                <h6>-23%</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex mt-2">
+                        <a class="cart-delete ms-2" href="#"><i class="fa-solid fa-trash"></i> REMOVE</a>
+                        <div class="ms-auto d-flex gap-3 align-items-center">
+                            <button class="cart-btn" onclick="decrement()">-</button>
+                            <h6 id="quantity">1</h6>
+                            <button class="cart-btn" onclick="increment()">+</button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="checkoutModalLabel">Checkout Completed</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Your order has been successfully completed!</p>
+                            <p><strong>Total Price:</strong> <span id="checkout-price"></span></p>
+                            <p><strong>Time:</strong> <span id="checkout-time"></span></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Cart Summary Section -->
+            <div class="shadow col-lg-3 col-md-auto col-sm-12 mb-4">
+                <h6>CART SUMMARY</h6>
+                <hr>
+                <div class="d-flex">
+                    <h6>Subtotal</h6>
+                    <h5 id="subtotal" class="ms-auto">$105.99</h5> <!-- Initial subtotal -->
+                </div>
+                <h6 class="text-tertiary">Delivery fees not included yet.</h6>
+                <hr>
+                <button id="checkout-amount" class="btn check-btn col-12 mb-3">CHECKOUT ($105.99)</button>
+                <!-- Returns Section -->
+                <h6>Returns are easy</h6>
+                <p>Free return within 7 days for ALL eligible items</p>
+                <a href="#" class="text-primary text-decoration-none">Details</a>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light pt-4">
+        <div class="container">
+            <div class="row">
+                <!-- Customer Service Section -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Customer Service</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Contact Us</a></li>
+                        <li><a href="#" class="text-light">Order Tracking</a></li>
+                        <li><a href="#" class="text-light">Returns & Refunds</a></li>
+                        <li><a href="#" class="text-light">Shipping Information</a></li>
+                        <li><a href="#" class="text-light">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Information Section -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Information</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">About Us</a></li>
+                        <li><a href="#" class="text-light">Privacy Policy</a></li>
+                        <li><a href="#" class="text-light">Terms & Conditions</a></li>
+                        <li><a href="#" class="text-light">Careers</a></li>
+                        <li><a href="#" class="text-light">Affiliate Program</a></li>
+                    </ul>
+                </div>
+
+                <!-- Follow Us Section -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Follow Us</h5>
+                    <div>
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Newsletter Subscription Section -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
+                    <form class="d-flex">
+                        <input type="email" class="form-control" placeholder="Enter your email" required>
+                        <button class="btn footer-btn ms-2" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="border-light">
+            <div class="text-center py-3">
+                <p class="mb-0">&copy; 2024 Your Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script>
+        let quantity = 1;
+
+        function increment() {
+            quantity++;
+            updateQuantityDisplay();
+            updateSubtotal();
+        }
+
+        function decrement() {
+            if (quantity > 1) {
+                quantity--;
+                updateQuantityDisplay();
+                updateSubtotal();
+            }
+        }
+
+        function updateQuantityDisplay() {
+            document.getElementById("quantity").textContent = quantity;
+            document.getElementById("cart-count").textContent = quantity; // Update the cart count
+        }
+
+        function updateSubtotal() {
+            const pricePerItem = 105.99; // Set your item price here
+            const subtotal = (quantity * pricePerItem).toFixed(2);
+            document.getElementById("subtotal").textContent = `$${subtotal}`;
+            document.getElementById("checkout-amount").textContent = `CHECKOUT ($${subtotal})`;
+        }
+
+
+    </script>
+
+    <script>
+        document.getElementById("checkout-amount").addEventListener("click", function () {
+            // Set the price in the modal
+            const price = document.getElementById("checkout-amount").textContent.match(/\$\d+\.\d+/)[0];
+            document.getElementById("checkout-price").textContent = price;
+
+            // Get the current time
+            const currentTime = new Date().toLocaleString();
+            document.getElementById("checkout-time").textContent = currentTime;
+
+            // Show the modal
+            const checkoutModal = new bootstrap.Modal(document.getElementById("checkoutModal"));
+            checkoutModal.show();
+        });
+
+    </script>
+
+    <script>
+        // Select all delete buttons
+        document.querySelectorAll('.cart-delete').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                // Find the closest parent element with class 'cart-item' and remove it
+                const cartItem = button.closest('.cart-item');
+                if (cartItem) {
+                    cartItem.remove();
+                }
+
+                // Update the cart count and show "No items in cart" if needed
+                updateCartCount();
+            });
+        });
+
+        // Function to update cart count dynamically
+        function updateCartCount() {
+            const cartCountElement = document.getElementById("cart-count");
+            const noItemsMessage = document.getElementById("no-items-message");
+            const remainingItems = document.querySelectorAll('.cart-item').length;
+
+            // Update the cart count number
+            cartCountElement.textContent = remainingItems;
+
+            // Show "No items in cart" if there are no remaining items
+            if (remainingItems === 0) {
+                noItemsMessage.style.display = 'block';
+            } else {
+                noItemsMessage.style.display = 'none';
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
